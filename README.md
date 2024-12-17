@@ -20,7 +20,7 @@ This project generates an **ICS (iCalendar) file** feed for high-importance econ
 
 2. **Filter Events**:  
    - Fetches only **high-importance** events (`importance: 3`).
-   - Filters events for specific countries (`US`, `IN`).
+   - Filters events for specific countries (`US`).
 
 3. **Generate ICS File**:  
    Converts the fetched events into a valid **iCalendar (.ics)** file format using the `ics` library.
