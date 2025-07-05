@@ -3,6 +3,8 @@ import {CalendarModule} from "./calendar/calendar.module";
 
 async function bootstrap() {
     const app = await NestFactory.create(CalendarModule);
-    await app.listen(process.env.PORT || 8889, "0.0.0.0");
+    const port = process.env.PORT || 8889;
+    await app.listen(port, "0.0.0.0");
+    console.log(`Server is running on port ${port}`, );
 }
 bootstrap();
