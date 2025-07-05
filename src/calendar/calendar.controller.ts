@@ -8,6 +8,7 @@ export class CalendarController {
 
     @Get()
     getCalendar(@Res() res: Response) {
+        console.log(`Received request to get calendar events`);
         return this.calendarService.getCalendar(res);
     }
 }

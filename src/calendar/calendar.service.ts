@@ -52,9 +52,11 @@ export class CalendarService {
     async getCalendar(res: Response) {
         try {
             // Fetch high-importance events
+            console.log('Getting calendar with high important events');
             const eventsData = await this.fetchHighImportanceEvents();
 
             // Convert API events to iCalendar format
+            console.log('Mapping events to iCalendar format');
             const events: EventAttributes[] = eventsData.map((event: any) => {
                 const importance = event.importance;
 
@@ -97,9 +99,11 @@ ${event.comment}`,
             }
 
             // Generate ICS file
+            console.log('Creating calendar events...');
             const {error, value} = createEvents(events);
             if (error) {
-                throw new Error("Failed to generate ICS: " + error.message);
+                console.error("Failed to generate ICS: " + error.message);
+                return;
             }
 
             // Set response headers for ICS
@@ -109,6 +113,7 @@ ${event.comment}`,
             res.setHeader("Content-Disposition", 'attachment; filename="high_important_calendar.ics"');
             // @ts-ignore
             res.status(200).send(value);
+            console.log(`Response sent with ${events.length} events in ICS format.`);
         } catch (error) {
             console.error("Error generating calendar feed:", error);
             // @ts-ignore
