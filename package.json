@@ -1,8 +1,9 @@
 {
-  "name": "functions",
+  "name": "economic-calendar-tradingview",
+  "main": "dist/main.js",
   "scripts": {
+    "build": "tsc",
     "start": "node dist/main.js",
-    "build": "nest build",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch"
   },
